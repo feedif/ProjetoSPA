@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA com Angular</title>
+</head>
+
+<body>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div>
+    <spa-produtos [valorInicial]="valor"></spa-produtos>
+    <button (click)="mudarValor()">Adicionar Produto</button>
+    <button (click)="resetarValor()">Resetar Valor</button>
+    <button (click)="exibirTabela()">Exibir Tabela</button>
+    <button (click)="exibirResultado()">Exibir Resultados</button>
+  </div>
+
+  <table *ngIf="exibeTabela">
+    <tr>
+      <th>Nome</th>
+      <th>Valor(R$)</th>
+      <th>Quantidade</th>
+    </tr>
+    <tr *ngFor="let produto of listaProdutos">
+      <td>{{produto.nome}}</td>
+      <td>{{produto.valor}}</td>
+      <td>{{produto.quantidade}}</td>
+    </tr>
+  </table>
+
+
+  <table *ngIf="exibeResultado">
+    <tr>
+      <th>Nome</th>
+      <th>Total(R$)</th>
+    </tr>
+    <tr *ngFor="let produto of listaProdutos">
+      <td>{{produto.nome}}</td>
+      <td>{{produto.valor * produto.quantidade}}</td>
+    </tr>
+  </table>
+  
+</body>
+
+</html>  
